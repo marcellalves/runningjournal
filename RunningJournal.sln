@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningJournal.AcceptanceTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningJournal.Api", "RunningJournal.Api\RunningJournal.Api.csproj", "{73130847-0FAF-46B0-ACE9-8647EC6157AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningJournalApi.UnitTests", "RunningJournalApi.UnitTests\RunningJournalApi.UnitTests.csproj", "{A10C9135-B5CA-491E-A768-C538DA940BE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{73130847-0FAF-46B0-ACE9-8647EC6157AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73130847-0FAF-46B0-ACE9-8647EC6157AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73130847-0FAF-46B0-ACE9-8647EC6157AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10C9135-B5CA-491E-A768-C538DA940BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10C9135-B5CA-491E-A768-C538DA940BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10C9135-B5CA-491E-A768-C538DA940BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10C9135-B5CA-491E-A768-C538DA940BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
