@@ -31,5 +31,16 @@ namespace RunningJournal.Api
                 .DefaultIfEmpty(string.Empty)
                 .Aggregate((x, y) => x + "&" + y);
         }
+
+        public static bool TryParse(string tokenString, out SimpleWebToken token)
+        {
+            if (tokenString == "foo")
+            {
+                token = null;
+                return false;
+            }
+            token = new SimpleWebToken(new Claim("foo", "bar"));
+            return true;
+        }
     }
 }

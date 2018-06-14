@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="ClaimComparer.cs" />
     <Compile Include="JournalController.cs" />
     <Compile Include="Models\JournalModel.cs" />
     <Compile Include="Models\JournalEntryModel.cs" />
