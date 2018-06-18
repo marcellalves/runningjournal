@@ -51,11 +51,14 @@ namespace RunningJournalApi.UnitTests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void TryParseInvalidStringReturnsFalse()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("   ")]
+        [InlineData("foo")]
+        [InlineData("bar")]
+        public void TryParseInvalidStringReturnsFalse(string invalidString)
         {
             // Fixture setup
-            var invalidString = "foo";
             // Exercise system
             SimpleWebToken dummy;
             bool actual = SimpleWebToken.TryParse(invalidString, out dummy);
@@ -64,11 +67,18 @@ namespace RunningJournalApi.UnitTests
             // Teardown
         }
 
-        [Fact]
-        public void TryParseValidStringReturnsCorrectResult()
+        [Theory]
+        [InlineData(new object[] { new string[0] })]
+        [InlineData(new object[] { new[] { "foo|bar" } })]
+        [InlineData(new object[] { new[] { "foo|bar", "baz|qux" } })]
+        public void TryParseValidStringReturnsCorrectResult(
+            string[] keysAndValues)
         {
             // Fixture setup
-            var expected = new[] { new Claim("foo", "bar") };
+            var expected = keysAndValues
+                .Select(s => s.Split('|'))
+                .Select(a => new Claim(a[0], a[1]))
+                .ToArray();
             var tokenString = new SimpleWebToken(expected).ToString();
             // Exercise system
             SimpleWebToken actual;

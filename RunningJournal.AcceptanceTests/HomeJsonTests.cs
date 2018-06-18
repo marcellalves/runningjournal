@@ -68,9 +68,10 @@ namespace RunningJournal.AcceptanceTests
             }
         }
 
-        [Fact]
+        [Theory]
         [UseDatabase]
-        public void GetRootReturnsCorrectEntryFromDatabase()
+        [InlineData("foo")]
+        public void GetRootReturnsCorrectEntryFromDatabase(string userName)
         {
             dynamic entry = new ExpandoObject();
             entry.time = DateTimeOffset.Now;
@@ -81,11 +82,12 @@ namespace RunningJournal.AcceptanceTests
 
             var connStr = ConfigurationManager.ConnectionStrings["running-journal"].ConnectionString;
             var db = Database.OpenConnection(connStr);
-            var userId = db.User.Insert(UserName: "foo").UserId;
+            db.User.Insert(UserName: userName);
+            var userId = db.User.FindAllByUserName(userName).Single().UserId;
             entry.UserId = userId;
             db.JournalEntry.Insert(entry);
 
-            using (var client = HttpClientFactory.Create())
+            using (var client = HttpClientFactory.Create(userName))
             {
                 var response = client.GetAsync("").Result;
 
